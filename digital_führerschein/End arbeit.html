@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechen Maschiene</title>
+</head>
+<body>
+    <body style="background-color: rgb(255, 255, 255) ;" >
+  
+        <style>
+          
+         h1 {
+          font-size: 75px;
+          text-align: left;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+         div {
+          border-radius: 10px;
+          
+          padding: 38px;
+          text-align: center;
+          background-color: #2115157f;
+          font-size: 100px;
+          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+      
+         p {
+          font-size: 75px;
+          text-align: left;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          transform: translate(0px,150px);
+        }
+        
+         input {
+          font-size: 50px;
+          background-color: rgba(255, 255, 255, 0.319);
+          font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          text-align: center;
+          transform: translate(550px,-150px);
+        }
+      
+         button {
+          font-size: 50px;
+          background-color: #483a3a7b;
+          transform: translate(-58px,-150px);
+        }
+        </style>
+          <h1>Versuche es zu lösen</h1>
+          <div id="number-display"></div>
+          <p id="numbers"></p>
+          <p> Anzahl der punkte : <span id="point">0</span></p>
+          <input type="text" id="number-input" placeholder="Gib deine Antwort an... "></input>
+          <button onclick="DieRichtigeAntwortWäre()">Antwort</button>
+          
+      
+        <script>
+            const NUMBERS_TO_DISPLAY = 10;
+            let currentNumberIndex = 0;
+            let numbers = [];
+        
+            function NächsteNummer() {
+              if (currentNumberIndex >= NUMBERS_TO_DISPLAY) {
+                return;
+               }
+        
+               let number = Math.floor(Math.random() * 10);
+               numbers.push(number);
+               document.getElementById("number-display").innerText = number; 
+               currentNumberIndex++;
+               setTimeout(NächsteNummer, 1400);
+             
+               }
+               function DieRichtigeAntwortWäre() {
+               let expectedSum = numbers.reduce((a, b) => a + b, 0);
+               let actualSum = parseInt(document.getElementById("number-input").value);
+          
+               if (expectedSum === actualSum) {
+               alert(" DieRichtigeAntwortWäre : " + expectedSum);
+               document.getElementById("point").innerHTML = parseInt(document.getElementById("point").innerHTML) + 200;
+               setTimeout(function() {
+               currentNumberIndex = 0;
+               numbers = [];
+               NächsteNummer();
+               }, 5000);
+               } 
+               else {
+               alert(" DieRichtigeAntwortWäre : " + expectedSum);
+              if(document.getElementById("point").value < 0){
+               document.getElementById("point").innerHTML = parseInt(document.getElementById("point").innerHTML) - 200;
+               }
+               setTimeout(function() {
+               currentNumberIndex = 0;
+               numbers = [];
+               NächsteNummer();
+               }, 5000);
+               } }
+               NächsteNummer();
+              
+      
+        </script>
+      
+</body>
+</html>

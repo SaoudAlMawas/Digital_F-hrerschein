@@ -70,7 +70,7 @@
                numbers.push(number);
                document.getElementById("number-display").innerText = number; 
                currentNumberIndex++;
-               setTimeout(NächsteNummer, 1400);
+               setTimeout(NächsteNummer, 2000);
              
                }
                function DieRichtigeAntwortWäre() {
@@ -79,7 +79,7 @@
           
                if (expectedSum === actualSum) {
                alert(" DieRichtigeAntwortWäre : " + expectedSum);
-               document.getElementById("point").innerHTML = parseInt(document.getElementById("point").innerHTML) + 200;
+               document.getElementById("point").innerHTML = parseInt(document.getElementById("point").innerHTML) + 50;
                setTimeout(function() {
                currentNumberIndex = 0;
                numbers = [];
@@ -89,7 +89,7 @@
                else {
                alert(" DieRichtigeAntwortWäre : " + expectedSum);
               if(document.getElementById("point").value < 0){
-               document.getElementById("point").innerHTML = parseInt(document.getElementById("point").innerHTML) - 200;
+               document.getElementById("point").innerHTML = parseInt(document.getElementById("point").innerHTML) - 50;
                }
                setTimeout(function() {
                currentNumberIndex = 0;
